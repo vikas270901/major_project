@@ -1,0 +1,48 @@
+<%include partials/header%>
+<%=data%>
+<%var counter=0;%>
+<%for(var i=data.length-1;i>=0;i--){counter++;%>
+<%if(counter>=15){break;}%>
+<div class="ui segment">
+<h2>	<!-- <img src="<%=data[i].image%>" height=30px width=30px> -->
+<b> Job:</b> <%=data[i].job%></h2>
+<hr>
+<b>Posted By:</b> <%=data[i].pstname%></br>
+<b>Experience:</b> <%=data[i].expr%> Years</br>
+<b>Location:</b> <%=data[i].location%></br>
+<b>Description:</b> <%=data[i].description%></br>
+<b>Posted on:</b><%=data[i].date.toDateString()%><br/>
+<b>Time:</b><%=data[i].date.toTimeString()%><br/><br/>
+<b>Likes:</b><%=data[i].likes%><br/>
+<a href="/profile/<%=data[i].ide%>" class="ui primary button">Like</a>&nbsp
+<a href="/profile/<%=data[i].ide%>" class="ui primary button">Apply For Job</a></br>
+<br/>
+<form class="ui form" action="view/comnt/<%=data[i]._id%>" method="POST">
+<div class="two fields">
+<input type="hidden" name="author" value="<%=user.username%>">
+<div class="sixteen wide field">
+<input type="text" size="250" name="txt" placeholder="Add Comment">
+</div>
+<input  class="ui mini basic green button" type="submit" value="comment">
+</div>
+</form>
+</div>
+<%}%>
+<a href="#" class="ui primary button">The End</a>
+</div>
+<div class="ui container" style="position:absolute;top:55px;border-radius:2px;width:19%;padding-left:10px;">
+<%var count=0;%>
+<h3 style="width:250px;" ><b>&nbspSUGGESTED USERS -></b></h3></br>
+<%for(var k=profiles.length-1;k>=0;k--){%>
+<%for(var l=alluser.length-1;l>=0;l--){%>
+<%if(profiles[k].ide == alluser[l].id){count++;%>
+<div style="border-bottom:0.2px solid #DCDCDC;">
+<a href="/profile/<%=profiles[k].ide%>">
+<img src="<%=profiles[k].image%>" height="40px" width="40px" style="border-radius:20px;" >
+<b><span style="font-size:15px;"><%=alluser[l].username%></span></b></a> </br>
+</div>
+<%}}if(count>=10){break;}}%></br>
+<a href="#"> view more...</a>
+<div>
+</body>
+</html>
