@@ -3,8 +3,14 @@
 <h2 align="center">Search profile!!</h2>
 <form class="ui inverted form" action="/search" method="POST">
 <div class="eight wide field">
-<label>Enter Username: </label>
-<input type="text" size="25" name="search" placeholder="Username" required>
+<select type="text" name="data" required>
+	<option value="name" >Name</option>
+	<option value="location" >Location</option>
+	<option value="expr" >Experience</option>
+	<option value="gender" >Gender</option>
+</select>
+<label>Enter Search: </label>
+<input type="text" size="25" name="search" placeholder="Search" required>
 </div></br>
 <input class="ui small primary button" type="submit" value="Submit">
 </form>

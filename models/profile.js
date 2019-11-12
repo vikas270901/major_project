@@ -5,6 +5,7 @@ var schema = new mongo.Schema({
 		name: String,
 		gender: String,
 		protype: String,
+		job: String,
 		location: String,
 		expr: String,
 		image:String,

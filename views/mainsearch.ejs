@@ -1,0 +1,23 @@
+<%include partials/header%>
+<data%>
+<%=usrid%>
+<div class="ui container">
+<div class="ui segment">
+<div class="segment">
+</div>
+<h3><%var count=0%></h3>
+<%for(var i=0;i<usrid.length;i++){%>
+<b>Name:&nbsp</b><%=usrid[i].name.toUpperCase()%><br/>
+<b>Gender:&nbsp</b><%=usrid[i].gender%><br/>
+<b>Job:&nbsp</b><%=usrid[i].job%><br/>
+<b>Location:&nbsp</b><%=usrid[i].location%><br/>
+<b>Experience:&nbsp</b><%=usrid[i].expr%><br/>
+<b>Contact:&nbsp</b><%=usrid[i].contact%><br/>
+<a href="profile/<data[0].ide%>" class="ui small blue button">View Profile</a>
+</br>
+<hr>
+<%count++;}%>
+</div>
+</div>
+</div>
+<%include partials/footer%>

@@ -12,11 +12,20 @@
 <b>Location:</b> <%=data[i].location%></br>
 <b>Description:</b> <%=data[i].description%></br>
 <b>Posted on:</b><%=data[i].date.toDateString()%><br/>
-<b>Time:</b><%=data[i].date.toTimeString()%><br/><br/>
+<b>Time:</b><%=data[i].date.toLocaleTimeString()%><br/><br/>
 <b>Likes:</b><%=data[i].likes%><br/>
-<a href="/profile/<%=data[i].ide%>" class="ui primary button">Like</a>&nbsp
+<a href="/profile/" class="ui primary button">Like</a>&nbsp
 <a href="/profile/<%=data[i].ide%>" class="ui primary button">Apply For Job</a></br>
 <br/>
+<div class="ui segment"><%var cnt=0;%>
+<%for(var k=data[i].comments.length-1;k>0;k--){cnt++;%>
+&nbsp&nbsp&nbsp&nbsp<b><%=data[i].comments[k].author%>:</b> 
+<%=data[i].comments[k].text%>
+<%if(cnt>=5){break;}%>
+<br/>
+<%}%>
+</div>
+sjdsgajkdsgajdfh
 <form class="ui form" action="view/comnt/<%=data[i]._id%>" method="POST">
 <div class="two fields">
 <input type="hidden" name="author" value="<%=user.username%>">

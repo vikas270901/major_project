@@ -5,6 +5,7 @@ var parser = require("body-parser");
 var method = require("method-override");
 var model = require("./models/schema");
 var User = require("./models/users");
+var rate = require("./models/rate");
 var user = require("./models/ussr");
 var profile = require("./models/profile");
 var session = require("express-session");
@@ -19,7 +20,8 @@ app.use(passport.session());
 passport.use(new local(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-var seedDB = require("./seed/seed");
+app.use(parser.json());
+// var seedDB = require("./seed/seed");
 app.use(parser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(method("_method"));
@@ -102,16 +104,36 @@ app.get("/findall", function(req, res){
 	
 });
 
+app.get("/search", function(req, res){
+	res.render("search");
+});
+
 app.post("/search", function(req, res){//'':req.params.id
-	User.find({'username':req.body.search}, function(err, resl){
-		if(err){console.log(err);res.send('<h1>User does not exist.</h1>');}
-		else{if(resl[0] == null ){res.send('<h1>User does not exist.</h1>');}
-			else{profile.find({'ide':resl[0].id}, function(err, resll){
-		if(err){console.log(err);res.send('<h1>User does not exist.</h1>');}
-		else{res.render("alluzers", {data:resll, usrid:resl[0].username});
+	var dat = req.body.data;
+	var data = {};data[dat]= req.body.search;
+	profile.find(data, function(err, resl){
+		if(err){console.log(err);res.send('<h1>User does not exist1.</h1>');}
+		else{if(resl[0] == null ){res.send('<h1>User does not exist2.</h1>');}
+			else{
+				profile.find({'ide':resl[0].id}, function(err, resll){
+		if(err){console.log(err);res.send('<h1>User does not exist3.</h1>');}
+		else{res.render("mainsearch", {data:resll, usrid:resl});
 		}});
 	}}});
 });
+
+app.post("/searchuser", function(req, res){//'':req.params.id
+	User.find({'username':req.body.search}, function(err, resl){
+		if(err){console.log(err);res.send('<h1>User does not exist1.</h1>');}
+		else{if(resl[0] == null ){res.send('<h1>User does not exist2.</h1>');}
+			else{
+				profile.find({'ide':resl[0].id}, function(err, resll){
+		if(err){console.log(err);res.send('<h1>User does not exist3.</h1>');}
+		else{res.render("alluzers", {data:resll, usrid:resl});
+		}});
+	}}});
+});
+
 
 app.get("/auth", function(req, res){
 	res.render("auth");
@@ -163,7 +185,7 @@ app.get("/users", logoutt, function(req, res){
 });
 
 app.get("/", logoutt, function(req, res){
-	model.find({}, function(err, resl){// model.find({}).populate("comments").exec(function(err, resl){
+	model.find({}).populate("comments").exec(function(err, resl){// model.find({}).populate("comments").exec(function(err, resl){
 		// console.log(resl);
 		if(err) {console.log(err);}
 		else {
@@ -176,11 +198,23 @@ app.get("/", logoutt, function(req, res){
 		res.render("land", {data:resl, user:req.user, uzer:req.user, alluser:resll, profiles:ress});
 	}});}
 	})}
-		});
-});
+});});
 
 app.get("/start", logoutt, function(req, res){
 	res.render("start", {data:req.user.username});
+});
+
+app.get("/rateus", function(req, res){
+	res.render("rateus", {data:req.user.username});
+});
+
+app.post("/rate", function(req, res){
+	console.log(req.body);
+	rate.findOneAndUpdate({'rad':5}, {'rad':6}, function(err, resl){
+		if(err) throw(err);
+			console.log(resl);
+	});
+	// res.render("rateus", {data:req.user.username});
 });
 
 app.post("/land", logoutt, function(req, res){	 
@@ -198,6 +232,13 @@ app.post("/land", logoutt, function(req, res){
 }});
 });
 
+app.get("/view/:id", logoutt, function(req, res){
+	model.findById(req.params.id).populate("comments").exec(function(err, resl){
+		if(err) {console.log(err);}
+		else {res.render("show", {data:resl, usr:req.user});
+	}});
+});
+
 app.post("/view/comnt/:id", function(req, res){
 	var data = {text:req.body.txt, author:req.body.author};
 	model.findById(req.params.id, function(err, ress){
@@ -208,6 +249,7 @@ app.post("/view/comnt/:id", function(req, res){
 		else {
 			ress.comments.push(resl);
 			ress.save();
+			// console.log(resl);
 			res.redirect('/view/'+req.params.id);
 		}
 	});}

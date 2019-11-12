@@ -1,14 +1,17 @@
 <%include partials/header%>
-<%include partials/footer%>
+<%=data%>
 <div class="ui container">
 <div class="ui segment">
 <a href="/" class="ui basic button">Back</a>
 <div class="ui segment">
-<h2><%=data.pstname%></h2>
-<%=data.date.toDateString()%><br/><br/>
+<h2>Posted By : <%=data.pstname%></h2>
+<%=data.date.toDateString()%><br/>
+<%=data.date.toTimeString()%><br/>
 <div class="segment">
-<img src="<%=data.image%>" height=600px width=1060px><br/>
 </div>
+<b>Job (Requirement):&nbsp</b><%-data.job%><br/>
+<b>Location:&nbsp</b><%-data.job%><br/>
+<b>Experience needed:&nbsp</b><%-data.expr%><br/>
 <b>Description:&nbsp</b><%-data.description%><br/><br/>
 <a href="/edit/<%-data.id%>" class="ui basic blue button">EDIT POST</a>
 <form action="/delete/<%=data.pstname%>/<%=data.id%>?_method=DELETE" method="POST"><br/>
