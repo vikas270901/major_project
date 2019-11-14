@@ -1,5 +1,5 @@
 <%include partials/header%>
-<%=data%>
+<%data%>
 <%var counter=0;%>
 <%for(var i=data.length-1;i>=0;i--){counter++;%>
 <%if(counter>=15){break;}%>
@@ -25,7 +25,6 @@
 <br/>
 <%}%>
 </div>
-sjdsgajkdsgajdfh
 <form class="ui form" action="view/comnt/<%=data[i]._id%>" method="POST">
 <div class="two fields">
 <input type="hidden" name="author" value="<%=user.username%>">

@@ -7,4 +7,4 @@ var schema = new mongo.Schema({
 	rad22: {type: Number, default: 3}
 });
 
-module.exports = new mongo.model("rate", schema);
+module.exports = new mongo.model("rateus", schema);

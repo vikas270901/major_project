@@ -5,7 +5,7 @@ var parser = require("body-parser");
 var method = require("method-override");
 var model = require("./models/schema");
 var User = require("./models/users");
-var rate = require("./models/rate");
+var Rateus = require("./models/rateus");
 var user = require("./models/ussr");
 var profile = require("./models/profile");
 var session = require("express-session");
@@ -210,9 +210,19 @@ app.get("/rateus", function(req, res){
 
 app.post("/rate", function(req, res){
 	console.log(req.body);
-	rate.findOneAndUpdate({'rad':5}, {'rad':6}, function(err, resl){
+	Rateus.find({}, function(err, resl){
 		if(err) throw(err);
-			console.log(resl);
+		// if(resl === []){
+			Rateus.create(req.body, function(err, resll){
+				if(err) throw (err);
+					console.log(resll);
+					res.send(resll);			
+			})	
+		// }
+		// else{
+		// 		console.log(resl);
+		// 		res.send(resl);			
+		// }
 	});
 	// res.render("rateus", {data:req.user.username});
 });
