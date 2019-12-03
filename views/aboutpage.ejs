@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> Main Page </title>
+	<link rel="stylesheet" href="project.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+ 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>	
+	<style>
+		hr{
+			color: #33adff
+			display: block;
+  			margin-top: 0.5em;
+  			margin-bottom: 0.5em;
+ 			margin-left: auto;
+  			margin-right: auto;
+ 			border-style: inset;
+  			border-width: 5px;
+		}
+		body {
+  margin:0;
+	
+	text-align:center;
+}
+
+h1{
+    background-color:powderblue;
+    height:100px;
+}
+p{
+    font-family: cursive;
+    font-size: 25px;
+    text-align: left;
+}
+	</style>
+</head>
+<body>
+
+<div class="ui inverted menu" style="position: sticky; top: 0; z-index: +1;">
+	<div class="ui container">
+	<a href="/home" class="item"><i class="in flag"></i></a>
+	<a  href="/home" class="item"><b>Home</b></a>
+	<a href="/" class="item">Job Posts</a> 
+	<a  href="/users" class="item"><b>All Users</b></a>
+	<a href="/about" class="item">About</a>
+	<div class="right menu">
+		<%if(!user){%>
+		<a href="/" class="item"><b>Login</b></a>
+		<a href="/signup" class="item">Signup</a>
+		<%} else {%>
+		<div class="ui fluid category search">
+		<div class="ui icon input">
+		<form action="/searchuser" method="POST">
+			<input class="prompt" type="text" size="25" name="search" placeholder="Username" required>
+		</form>
+		<i class="search icon"></i>
+	</div>
+  	<div class="results"></div>
+	</div>
+		<a href="/search" class="item">Search User</a>
+		<a href="/services" class="item">Services</a>
+		<a href="/profile/<%=user.id%>" class="item"><b>Hii, <%=user.username%></b></a>
+		<a href="/start" class="ui primary button">Create Job</a>
+		<a href="/logout" class="item">Logout</a>
+		<%}%>
+	</div>
+	</div>
+</div> 	
+
+	<h1 style="height:60px; background-color: #e6005c">ABOUT US</h1>
+	<hr>
+	<p>
+		The basic idea behind our project is the notion that environmental and social burden can be reduced and the quality of life enhanced by offering services in and around the household.<br><br>Our objective is to create an easy to use interface for local services such as repair & maintenance, home cleaning, homecare & design, pest control, packers & movers, business services etc. With the help of this application we are able to reduce the gap between service demand and service providers. This will ultimately result to increase in employment.
+	</p>
+	
+
+
+
+
+</body>
+</html>

@@ -14,7 +14,7 @@ Gender: <%=data[i].gender%></br>
 About:<%=data[i].about.substring(0, 50)%>...<br/><br/>
 <a href="/profile/<%=data[i].ide%>" class="ui primary button">View Profile</a></br>
 <br/>
-<form class="ui form" action="view/comnt/<%=data[i]._id%>" method="POST">
+<!-- <form class="ui form" action="view/comnt/<%=data[i]._id%>" method="POST">
 <div class="two fields">
 <input type="hidden" name="author" value="<%=user.username%>">
 <div class="sixteen wide field">
@@ -22,7 +22,7 @@ About:<%=data[i].about.substring(0, 50)%>...<br/><br/>
 </div>
 <input  class="ui mini basic green button" type="submit" value="comment">
 </div>
-</form>
+</form> -->
 </div>
 <%}%>
 <a href="#" class="ui primary button">The End</a>

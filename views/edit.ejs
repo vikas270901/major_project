@@ -2,18 +2,38 @@
 <div class="ui segment">
 <a href="/" class="ui basic button">Back</a>
 <div class="ui segment">
-<%=valu%>
+<!-- <%=valu%> -->
+<!-- <%=data%> -->
 <form class="ui form" action="/update/<%=data.pstname%>/<%=data.id%>?_method=PUT" method="POST">
 <h2 class="ui dividing header">Edit and Update.</h2>
-<input type="hidden" name="pstname" value="<%=valu%>" placeholder="Name of Post">
-<div class="wide field">
-<label>Image Name or Type:</label>
-<input type="text" name="imgname" value="<%=data.imgname%>"  placeholder="Name of Image">
+<div class="field">
+<input type="hidden" name="likes" value="0">
+<input type="hidden" name="pstname" placeholder="Name of Post" value="<%=data.pstname%>">
+<div>
+<div class="field">
+<label>Job: </label>
+<input type="text" name="job" placeholder="Enter Job" value="<%=data.job%>" required>
 </div>
-<div class="eight wide field">
-<label>Description:</label>
-<textarea name="description"><%-data.description%>
-</textarea>
+<div class="field">
+<label>Location: </label>
+<input type="text" name="location" value="<%=data.location%>" placeholder="Location of Work">
+</div>
+<div class="field">
+<label>Experience: </label>
+<input type="text" name="expr" value="<%=data.expr%>" placeholder="Experience Required">
+</div>
+<div class="field">
+<label>Write 'description' (What to be done): </label>
+<textarea name="description" value="<%=data.description%>" ></textarea>
+<!-- <input type="hidden" name="pstname" value="<%=valu%>" placeholder="<%data%>"> -->
+<!-- <div class="wide field"> -->
+<!-- <label>Image Name or Type:</label> -->
+<!-- <input type="text" name="imgname" value="<%=data.imgname%>"  placeholder="Name of Image"> -->
+<!-- </div> -->
+<!-- <div class="eight wide field"> -->
+<!-- <label>Description:</label> -->
+<!-- <textarea name="description"><%-data.description%> -->
+<!-- </textarea> -->
 </div>
 <input class="ui basic purple button" type="submit" value="Update">
 </form>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<style>
+.mySlides {display:none;}
+</style>
+</head>
+
+<body>
+<div class="ui inverted menu" style="position: sticky; top: 0; z-index: +1;">
+  <div class="ui container">
+  <a href="/home" class="item"><i class="in flag"></i></a>
+  <a  href="/home" class="item"><b>Home</b></a>
+  <a href="/" class="item">Job Posts</a> 
+  <a  href="/users" class="item"><b>All Users</b></a>
+  <a href="/about" class="item">About</a>
+  <div class="right menu">
+    <%if(!user){%>
+    <a href="/" class="item"><b>Login</b></a>
+    <a href="/signup" class="item">Signup</a>
+    <%} else {%>
+    <div class="ui fluid category search">
+    <div class="ui icon input">
+    <form action="/searchuser" method="POST">
+      <input class="prompt" type="text" size="25" name="search" placeholder="Username" required>
+    </form>
+    <i class="search icon"></i>
+  </div>
+    <div class="results"></div>
+  </div>
+    <a href="/search" class="item">Search User</a>
+    <a href="/services" class="item">Services</a>
+    <a href="/profile/<%=user.id%>" class="item"><b>Hii, <%=user.username%></b></a>
+    <a href="/start" class="ui primary button">Create Job</a>
+    <a href="/logout" class="item">Logout</a>
+    <%}%>
+  </div>
+  </div>
+</div> 
+
+<div class="w3-content w3-section" style="max-width:450px;align:right;float:right;margin-right:10%;">
+  <img class="mySlides" src="./public/man4.jpg" style="width:100%;">
+  <img class="mySlides" src="./public/women.jpg" style="width:100%;">
+  <img class="mySlides" src="./public/tool.jpg" style="width:100%;" >
+</div>
+	<div style="float:left;margin:10%;">
+	<h2 style="font-family:Times New Roman, Times, serif;  font-variant: small-caps;">Instant Home service</h2>
+	<p style="font-family:Times New Roman, Times, serif;font-size:16px;">Get help when you need it.Tell us the <br/>
+	job,choose Professional at the right time.</p>
+	</div>
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+</body>
+</html>

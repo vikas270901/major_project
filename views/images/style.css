@@ -1,0 +1,304 @@
+
+.flip-card {
+  background-color: transparent;
+  float:left;
+  padding:0 10px 12px;
+  width: 150px;
+  height: 150px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+ 
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: black;
+  color: white;
+   text-align: center;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: black;
+  color: white;
+  transform: rotateY(180deg);
+}
+.row {margin: 0 -5px;}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.sansserif {
+ font: italic bold 18px/30px Georgia, serif;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+#overlay1 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+#overlay2 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+#overlay3 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+#overlay4 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+#overlay5 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+#overlay6 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+#overlay7 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+#overlay8 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+#overlay9 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+
+.card {
+  
+  max-width: 300px;
+  height:600px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-color:black;
+}
+
+.custom-radio-wrap {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.custom-radio-wrap form .form-group {
+	margin-bottom: 10px;
+}
+
+.custom-radio-wrap form .form-group:last-child {
+	margin-bottom: 0;
+}
+
+.custom-radio-wrap form .form-group label {
+	-webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 8px;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    vertical-align: baseline;
+    cursor: pointer;
+	float:left;
+}
+
+.custom-radio-wrap form .form-group .label-text {
+	vertical-align: baseline;
+	cursor: pointer;
+    padding-left: 10px;
+    margin-left: -1px;
+	color:white;
+	
+}
+
+.custom-radio-wrap form .form-group input {
+	display: none;
+	cursor: pointer;
+}
+
+.custom-radio-wrap form .form-group input:checked + label {
+	background-color: #e9ecee;
+  color: #99a1a7;
+  border: 1px solid #0079bf;  
+}
+
+.custom-radio-wrap form .form-group input:checked ~ .label-text {
+	color: white;
+  font-weight: 700;
+}
+
+.custom-radio-wrap form .form-group input:checked + label:after {
+	content: '';
+  width: 14px;
+  height: 14px;
+  border-radius: 50px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background: #e6005c;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+  text-shadow: none;
+  font-size: 32px;
+}
+.close
+{
+	position:fixed;
+	top:3%;
+	left:60%;
+	transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: transparent;
+  overflow:hidden;
+  outline:none;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+ 
+}
+.button2
+{
+	color:white;
+	border:none;
+	cursor: pointer;
+	border-radius:4px;
+	 background-color: transparent;
+  overflow:hidden;
+  outline:none;
+   font: italic bold 12px/30px Georgia, serif;
+}
+
+iframe[seamless]
+{
+	border:none;
+}

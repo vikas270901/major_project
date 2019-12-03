@@ -13,6 +13,8 @@ var passport = require("passport");
 var local = require("passport-local");
 var mongosession = require("passport-local-mongoose");
 var port = process.env.PORT || 2005;
+var path = require("path");
+app.use(express.static(path.join(__dirname, "./")))
 // var http = require("http").Server(app);
 app.use(require("express-session")({ secret:"secret",resave:false , saveUninitialized: false }));
 app.use(passport.initialize());
@@ -96,12 +98,29 @@ app.put("/profile/:id", function(req, res){
 	}});
 });
 
+app.put("/like/:id", function(req, res){
+	//console.log(req.body);
+	// profile.findOneAndUpdate({'ide':req.params.id}, req.body, function(err, resl){
+		// if(err){console.log(err);}
+		// else{
+		// res.redirect(''+req.params.id);	
+	// }});
+});
+
 app.get("/findall", function(req, res){
 	User.find({}, function(err, resl){
 		if(err){console.log(err);}
 		else{res.render("searchall", {data:resl});}
 	});
 	
+});
+
+app.get("/about", function(req, res){
+	res.render("aboutpage");	
+});
+
+app.get("/services", logoutt, function(req, res){
+	res.render("services");	
 });
 
 app.get("/search", function(req, res){
@@ -171,17 +190,21 @@ app.get("/users", logoutt, function(req, res){
 	profile.find({'protype':'Business'}, function(err, resl){// model.find({}).populate("comments").exec(function(err, resl){
 		// console.log(resl);
 		if(err) {console.log(err);}
-		else {
+		else { 
 			User.find({}, function(err, resll){
 				if(err) {console.log(err);}
 		else {
-		profile.find({}, function(err, ress){
+		profile.find({}).populate("comments").exec(function(err, ress){
 				if(err) {console.log(err);}
 		else {//console.log(resll+" haha ");	
 		res.render("landing", {data:resl, user:req.user, uzer:req.user, alluser:resll, profiles:ress});
 	}});}
 	})}
 		});
+});
+
+app.get("/home", logoutt, function(req, res){
+	res.render("home");
 });
 
 app.get("/", logoutt, function(req, res){
@@ -209,20 +232,28 @@ app.get("/rateus", function(req, res){
 });
 
 app.post("/rate", function(req, res){
-	console.log(req.body);
+	// console.log(req.body);
 	Rateus.find({}, function(err, resl){
 		if(err) throw(err);
-		// if(resl === []){
+		if(resl === []){
 			Rateus.create(req.body, function(err, resll){
 				if(err) throw (err);
 					console.log(resll);
 					res.send(resll);			
 			})	
-		// }
-		// else{
-		// 		console.log(resl);
-		// 		res.send(resl);			
-		// }
+		}
+		else{
+				console.log(resl);
+				const a = req.body.rad;
+				const b= resl[0].rad;
+				console.log((a+b)/2);
+				resl[0].rad=(resl[0].rad+req.body.rad)/2;
+				console.log(resl[0].rad);
+				// rad2:(resl[0].rad2+req.body.rad2)/2;
+				// rad12:(resl[0].rad12+req.body.rad12)/2;
+				// rad22:(resl[0].rad22+req.body.rad22)/2;
+				res.send(resl);			
+		}
 	});
 	// res.render("rateus", {data:req.user.username});
 });
@@ -241,6 +272,23 @@ app.post("/land", logoutt, function(req, res){
 		}});
 }});
 });
+
+app.get("/edit/:id", logoutt, function(req, res){
+	model.findById(req.params.id, function(err, resl){
+		if(err) {console.log("err");}
+		else {res.render("edit", {data:resl, valu:req.user.username});}
+});
+});
+
+app.delete("/delete/:usr/:id", function(req, res){
+	if(req.user.username === req.params.usr){
+	model.findByIdAndRemove(req.params.id, function(err, resl){
+		if(err) {console.log("err");}
+		else {res.redirect("/");}});
+}else{//console.log("You are not authorised to delete that...");
+		res.render("commentform", {data:req.params.id});
+}});
+
 
 app.get("/view/:id", logoutt, function(req, res){
 	model.findById(req.params.id).populate("comments").exec(function(err, resl){
@@ -264,6 +312,24 @@ app.post("/view/comnt/:id", function(req, res){
 		}
 	});}
 });
+});
+
+app.get("/like/:id", logoutt, function(req, res){
+	console.log(req.params.id+" "+req.user.id);
+	model.findById(req.params.id, function(err, resll){
+	// profile.find({'ide':req.user.id}, function(err, resell){
+		//console.log(resell[0].status+" ha "+resll.likes);
+		// if(resell[0].status==0){resell[0].status=1;resll.likes=resll.likes+1;}
+		// else{resell[0].status=0;resll.likes=resll.likes-1;}
+		resll.likes=resll.likes+1;
+		//console.log(resll.likes+" h "+resell[0].status);
+		var stat = {likes:resll.likes};
+	// profile.findOneAndUpdate({'ide':req.user.id},  {status:resell[0].status},function(err, respo){
+		// if(err){console.log(err);}});
+	model.findByIdAndUpdate(req.params.id,  stat, function(err, resl){
+	  	res.redirect("/");});
+	  	});
+	// });
 });
 
 function logoutt(req, res, next){

@@ -1,0 +1,1035 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+ 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+   <!-- <link rel="stylesheet" href="./style.css"> -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <style type="text/css">
+   	
+.flip-card {
+  background-color: transparent;
+  float:left;
+  padding:0 10px 12px;
+  width: 150px;
+  height: 150px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+ 
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: black;
+  color: white;
+   text-align: center;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: black;
+  color: white;
+  transform: rotateY(180deg);
+}
+.row {margin: 0 -5px;}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.sansserif {
+ font: italic bold 18px/30px Georgia, serif;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+#overlay1 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+#overlay2 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+#overlay3 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+#overlay4 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+#overlay5 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+#overlay6 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+#overlay7 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+#overlay8 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+#overlay9 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+ 
+}
+
+
+.card {
+  
+  max-width: 300px;
+  height:600px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-color:black;
+}
+
+.custom-radio-wrap {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.custom-radio-wrap form .form-group {
+	margin-bottom: 10px;
+}
+
+.custom-radio-wrap form .form-group:last-child {
+	margin-bottom: 0;
+}
+
+.custom-radio-wrap form .form-group label {
+	-webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 8px;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    vertical-align: baseline;
+    cursor: pointer;
+	float:left;
+}
+
+.custom-radio-wrap form .form-group .label-text {
+	vertical-align: baseline;
+	cursor: pointer;
+    padding-left: 10px;
+    margin-left: -1px;
+	color:white;
+	
+}
+
+.custom-radio-wrap form .form-group input {
+	display: none;
+	cursor: pointer;
+}
+
+.custom-radio-wrap form .form-group input:checked + label {
+	background-color: #e9ecee;
+  color: #99a1a7;
+  border: 1px solid #0079bf;  
+}
+
+.custom-radio-wrap form .form-group input:checked ~ .label-text {
+	color: white;
+  font-weight: 700;
+}
+
+.custom-radio-wrap form .form-group input:checked + label:after {
+	content: '';
+  width: 14px;
+  height: 14px;
+  border-radius: 50px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background: #e6005c;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+  text-shadow: none;
+  font-size: 32px;
+}
+.close
+{
+	position:fixed;
+	top:3%;
+	left:60%;
+	transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: transparent;
+  overflow:hidden;
+  outline:none;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+ 
+}
+.button2
+{
+	color:white;
+	border:none;
+	cursor: pointer;
+	border-radius:4px;
+	 background-color: transparent;
+  overflow:hidden;
+  outline:none;
+   font: italic bold 12px/30px Georgia, serif;
+}
+
+iframe[seamless]
+{
+	border:none;
+}
+
+   </style>
+
+
+</head>
+<body>
+
+<div class="ui inverted menu" style="position: sticky; top: 0; z-index: +1;">
+	<div class="ui container">
+	<a href="/home" class="item"><i class="in flag"></i></a>
+	<a  href="/home" class="item"><b>Home</b></a>
+	<a href="/" class="item">Job Posts</a> 
+	<a  href="/users" class="item"><b>All Users</b></a>
+	<a href="/about" class="item">About</a>
+	<div class="right menu">
+		<%if(!user){%>
+		<a href="/" class="item"><b>Login</b></a>
+		<a href="/signup" class="item">Signup</a>
+		<%} else {%>
+		<div class="ui fluid category search">
+		<div class="ui icon input">
+		<form action="/searchuser" method="POST">
+			<input class="prompt" type="text" size="25" name="search" placeholder="Username" required>
+		</form>
+		<i class="search icon"></i>
+	</div>
+  	<div class="results"></div>
+	</div>
+		<a href="/search" class="item">Search User</a>
+		<a href="/services" class="item">Services</a>
+		<a href="/profile/<%=user.id%>" class="item"><b>Hii, <%=user.username%></b></a>
+		<a href="/start" class="ui primary button">Create Job</a>
+		<a href="/logout" class="item">Logout</a>
+		<%}%>
+	</div>
+	</div>
+</div> 
+<div class="ui container" style="width:60%;">
+<div class="row">
+
+	<div id="overlay">
+	  <div class="card">
+	  <image src="./public/help.jpg" alt="Avatar" style="height:43%;width:100%;"/>
+	  <button class="close" onclick="off()"><i class="fa fa-close"></i></button>
+		<div class="custom-radio-wrap">
+			<form>
+				<div class="form-group">
+				  <input id="electrical" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="electrical"></label>
+				  <span class="label-text">General Electrical work</span>
+				</div>
+			
+	
+				<div class="form-group">
+				  <input id="motor" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="motor"></label>
+				  <span class="label-text">Motor Repairing</span>
+				</div>
+		
+		
+				<div class="form-group">
+				  <input id="mcb" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="mcb"></label>
+				  <span class="label-text">MCB or Fuse repair</span>
+				</div>
+			
+			
+				<div class="form-group">
+				  <input id="lamps" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="lamps"></label>
+				  <span class="label-text">Lamps and lights Fitting</span>
+				</div>
+		
+		
+				<div class="form-group">
+				  <input id="geyser" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="geyser"></label>
+				  <span class="label-text">Geyser servicing or repair</span>
+				</div>
+
+				<div class="form-group">
+				  <input id="inverter" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="inverter"></label>
+				  <span class="label-text">Inverter servicing or repair</span>
+				</div>
+			
+			</form>
+		</div> 
+		
+		<button style="background-color:#e6005c;border: none; padding: 15px 32px;font-size:16px;cursor: pointer;">Proceed</button>
+	  </div>
+	 
+	</div>
+	
+	
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img src="./public/plug.png" alt="Avatar" style="margin-top:15%;width:100px;height:100px;">
+		</div>
+		<div class="flip-card-back">
+		  <h3 class="sansserif" style="font-size:18px;line-height:30px;">Electrical</h3>
+		  <button onclick="on()"  class="button2"><span>Category Info </span></button>
+		</div>
+	  </div>
+	</div>
+	<!---------------------------------------------------------------------------->
+
+
+	<div id="overlay1">
+	  <div class="card">
+	  <image src="./public/help.jpg" alt="Avatar" style="height:43%;width:100%;"/>
+	  <button class="close" onclick="off1()"><i class="fa fa-close"></i></button>
+		<div class="custom-radio-wrap">
+			<form>
+				<div class="form-group">
+				  <input id="a1" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="a1"></label>
+				  <span class="label-text">General Plumbing work</span>
+				</div>
+			
+	
+				<div class="form-group">
+				  <input id="a2" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="a2"></label>
+				  <span class="label-text">Water Tank Installation</span>
+				</div>
+		
+		
+				<div class="form-group">
+				  <input id="a3" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="a3"></label>
+				  <span class="label-text">Bathroom fittings installation</span>
+				</div>
+			
+			
+				<div class="form-group">
+				  <input id="a4" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="a4"></label>
+				  <span class="label-text">Bathroom fittings repair</span>
+				</div>
+		
+		
+				<div class="form-group">
+				  <input id="a5" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="a5"></label>
+				  <span class="label-text">Kitchen sink installation</span>
+				</div>
+
+				<div class="form-group">
+				  <input id="a6" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="a6"></label>
+				  <span class="label-text">Water motor installation</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="a7" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="a7"></label>
+				  <span class="label-text">New water line connection</span>
+				</div>
+			
+			</form>
+		</div>
+		
+		<button style="background-color:#e6005c;border: none; padding: 15px 32px;font-size:16px;cursor: pointer;">Proceed</button>
+	  </div>
+	 
+	</div>
+	
+	
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img src="./public/pipeline.png" alt="Avatar" style="margin-top:15%;width:100px;height:100px;">
+		</div>
+		<div class="flip-card-back">
+		  <h3 class="sansserif" style="font-size:18px;line-height:30px;">Plumbing</h3>
+		  <button onclick="on1()"  class="button2"><span>Category Info </span></button>
+		</div>
+	  </div>
+	</div>
+	
+	<!---------------------------------------------------------------------------------->
+	
+	<div id="overlay2">
+	  <div class="card">
+	  <image src="./public/help.jpg" alt="Avatar" style="height:43%;width:100%;"/>
+	  <button class="close" onclick="off2()"><i class="fa fa-close"></i></button>
+		<div class="custom-radio-wrap">
+			<form>
+				<div class="form-group">
+				  <input id="b1" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="b1"></label>
+				  <span class="label-text">Complete Home Cleaning</span>
+				</div>
+			
+	
+				<div class="form-group">
+				  <input id="b2" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="b2"></label>
+				  <span class="label-text">Plot Cleaning</span>
+				</div>
+		
+		
+				<div class="form-group">
+				  <input id="b3" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="b3"></label>
+				  <span class="label-text">Office cleaning</span>
+				</div>
+			
+			
+				<div class="form-group">
+				  <input id="b4" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="b4"></label>
+				  <span class="label-text">Septic Tank Cleaning</span>
+				</div>
+			</form>
+		</div>
+		
+		<button style="background-color:#e6005c;border: none; padding: 15px 32px;font-size:16px;cursor: pointer;">Proceed</button>
+	  </div>
+	 
+	</div>
+	
+	
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img src="./public/broom.png" alt="Avatar" style="margin-top:15%;width:100px;height:100px;">
+		</div>
+		<div class="flip-card-back">
+		  <h3 class="sansserif" style="font-size:18px;line-height:30px;">Cleaning</h3>
+		  <button onclick="on2()"  class="button2"><span>Category Info </span></button>
+		</div>
+	  </div>
+	</div>
+	
+	<!------------------------------------------------------------------------------------------------------------ -->
+	
+	<div id="overlay3">
+	  <div class="card">
+	  <image src="./public/help.jpg" alt="Avatar" style="height:43%;width:100%;"/>
+	  <button class="close" onclick="off3()"><i class="fa fa-close"></i></button>
+		<div class="custom-radio-wrap">
+			<form>
+				<div class="form-group">
+				  <input id="d1" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="d1"></label>
+				  <span class="label-text">General Carpentry Work</span>
+				</div>
+			
+	
+				<div class="form-group">
+				  <input id="d2" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="d2"></label>
+				  <span class="label-text">New furniture making</span>
+				</div>
+		
+		
+				<div class="form-group">
+				  <input id="d3" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="d3"></label>
+				  <span class="label-text">Office cleaning</span>
+				</div>
+			
+			
+				<div class="form-group">
+				  <input id="d4" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="d4"></label>
+				  <span class="label-text">Window or door assembly</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="d5" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="d5"></label>
+				  <span class="label-text">Window or door repair</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="d6" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="d6"></label>
+				  <span class="label-text">Furniture repair</span>
+				</div>
+			</form>
+		</div>
+		
+		<button style="background-color:#e6005c;border: none; padding: 15px 32px;font-size:16px;cursor: pointer;">Proceed</button>
+	  </div>
+	 
+	</div>
+	
+	
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img src="./public/carpenter.png" alt="Avatar" style="margin-top:15%;width:100px;height:100px;">
+		</div>
+		<div class="flip-card-back">
+		  <h3 class="sansserif" style="font-size:18px;line-height:30px;">Carpentry</h3>
+		  <button onclick="on3()"  class="button2"><span>Category Info </span></button>
+		</div>
+	  </div>
+	</div>
+	
+	<!------------------------------------------------------------------------------------------->
+	
+	<div id="overlay4">
+	  <div class="card">
+	  <image src="./public/help.jpg" alt="Avatar" style="height:43%;width:100%;"/>
+	  <button class="close" onclick="off4()"><i class="fa fa-close"></i></button>
+		<div class="custom-radio-wrap">
+			<form>
+				<div class="form-group">
+				  <input id="e1" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="e1"></label>
+				  <span class="label-text">General Carpentry Work</span>
+				</div>
+			</form>
+		</div>
+		
+		<button style="background-color:#e6005c;border: none; padding: 15px 32px;font-size:16px;cursor: pointer;">Proceed</button>
+	  </div>
+	 
+	</div>
+	
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img src="./public/paint.png" alt="Avatar" style="margin-top:15%;width:100px;height:100px;">
+		</div>
+		<div class="flip-card-back">
+		  <h3 class="sansserif" style="font-size:18px;line-height:30px;">Painting</h3>
+		  <button onclick="on4()"  class="button2"><span>Category Info </span></button>
+		</div>
+	  </div>
+	</div>
+	
+	<!----------------------------------------------------------------------------------------------------------------------------------------->
+	
+	<div id="overlay5">
+	  <div class="card">
+	  <image src="./public/help.jpg" alt="Avatar" style="height:43%;width:100%;"/>
+	  <button class="close" onclick="off5()"><i class="fa fa-close"></i></button>
+		<div class="custom-radio-wrap">
+			<form>
+				<div class="form-group">
+				  <input id="f1" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="f1"></label>
+				  <span class="label-text">Microwave not working</span>
+				</div>
+			
+	
+				<div class="form-group">
+				  <input id="f2" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="f2"></label>
+				  <span class="label-text">Microwave does not Heat</span>
+				</div>
+		
+		
+				<div class="form-group">
+				  <input id="f3" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="f3"></label>
+				  <span class="label-text">Microwave Glass plate not Spining</span>
+				</div>
+			
+			
+				<div class="form-group">
+				  <input id="f4" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="f4"></label>
+				  <span class="label-text">Microwave buttons not working</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="f5" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="f5"></label>
+				  <span class="label-text">Microwave display not working</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="f6" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="f6"></label>
+				  <span class="label-text">Microwave sparking problem</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="d6" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="d6"></label>
+				  <span class="label-text">Furniture repair</span>
+				</div>
+			</form>
+		</div>
+		
+		<button style="background-color:#e6005c;border: none; padding: 15px 32px;font-size:16px;cursor: pointer;">Proceed</button>
+	  </div>
+	 
+	</div>
+	
+	
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img src="./public/microwave.png" alt="Avatar" style="margin-top:15%;width:100px;height:100px;">
+		</div>
+		<div class="flip-card-back">
+		  <h3 class="sansserif" style="font-size:18px;line-height:30px;">Microwave</h3>
+		  <button onclick="on5()"  class="button2"><span>Category Info </span></button>
+		</div>
+	  </div>
+	</div>
+	
+	
+	<!-------------------------------------------------------------------------------------------------------------------->
+	
+	<div id="overlay6">
+	  <div class="card">
+	  <image src="./public/help.jpg" alt="Avatar" style="height:43%;width:100%;"/>
+	  <button class="close" onclick="off6()"><i class="fa fa-close"></i></button>
+		<div class="custom-radio-wrap">
+			<form>
+				<div class="form-group">
+				  <input id="g1" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="g1"></label>
+				  <span class="label-text">LED or LCD TV not working</span>
+				</div>
+			
+	
+				<div class="form-group">
+				  <input id="g2" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="g2"></label>
+				  <span class="label-text">LED or LCD TV picture problem</span>
+				</div>
+		
+		
+				<div class="form-group">
+				  <input id="g3" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="g3"></label>
+				  <span class="label-text">LED or LCD TV sound problem</span>
+				</div>
+			
+			
+				<div class="form-group">
+				  <input id="g4" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="g4"></label>
+				  <span class="label-text">Plasma TV picture problem</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="g5" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="g5"></label>
+				  <span class="label-text">Plasma TV sound problem</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="f6" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="f6"></label>
+				  <span class="label-text">Plasma TV sound problem</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="d6" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="d6"></label>
+				  <span class="label-text">Furniture repair</span>
+				</div>
+			</form>
+		</div>
+		
+		<button style="background-color:#e6005c;border: none; padding: 15px 32px;font-size:16px;cursor: pointer;">Proceed</button>
+	  </div>
+	 
+	</div>
+	
+	
+	
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img src="./public/television.png" alt="Avatar" style="margin-top:15%;width:100px;height:100px;">
+		</div>
+		<div class="flip-card-back">
+		  <h3 class="sansserif" style="font-size:18px;line-height:30px;">Television</h3>
+		  <button onclick="on6()"  class="button2"><span>Category Info </span></button>
+		</div>
+	  </div>
+	</div>
+	
+	
+	<!------------------------------------------------------------------------------------------------------------------------>
+	
+	<div id="overlay7">
+	  <div class="card">
+	  <image src="./public/help.jpg" alt="Avatar" style="height:43%;width:100%;"/>
+	  <button class="close" onclick="off7()"><i class="fa fa-close"></i></button>
+		<div class="custom-radio-wrap">
+			<form>
+				<div class="form-group">
+				  <input id="h1" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="h1"></label>
+				  <span class="label-text">General washing machine repair</span>
+				</div>
+			
+	
+				<div class="form-group">
+				  <input id="h2" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="h2"></label>
+				  <span class="label-text">General washing machine repair</span>
+				</div>
+		
+		
+				<div class="form-group">
+				  <input id="h3" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="h3"></label>
+				  <span class="label-text">Washing Machine not spinning</span>
+				</div>
+			
+			
+				<div class="form-group">
+				  <input id="h4" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="h4"></label>
+				  <span class="label-text">Washing Machine making noise</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="h5" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="h5"></label>
+				  <span class="label-text">Washing Machine not draining</span>
+				</div>
+			</form>
+		</div>
+		
+		<button style="background-color:#e6005c;border: none; padding: 15px 32px;font-size:16px;cursor: pointer;">Proceed</button>
+	  </div>
+	 
+	</div>
+	
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img src="./public/wmachine.png" alt="Avatar" style="margin-top:15%;width:100px;height:100px;">
+		</div>
+		<div class="flip-card-back">
+		  <h3 class="sansserif" style="font-size:18px;line-height:30px;">washing Machine</h3>
+		  <button onclick="on7()"  class="button2"><span>Category Info </span></button>
+		</div>
+	  </div>
+	</div>
+	
+	<!--------------------------------------------------------------------------------------------------------------------------->
+	
+	<div id="overlay8">
+	  <div class="card">
+	  <image src="./public/help.jpg" alt="Avatar" style="height:43%;width:100%;"/>
+	  <button class="close" onclick="off8()"><i class="fa fa-close"></i></button>
+		<div class="custom-radio-wrap">
+			<form>
+				<div class="form-group">
+				  <input id="i1" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="i1"></label>
+				  <span class="label-text">Cockroach</span>
+				</div>
+			
+	
+				<div class="form-group">
+				  <input id="i2" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="i2"></label>
+				  <span class="label-text">Mosquito</span>
+				</div>
+		
+		
+				<div class="form-group">
+				  <input id="i3" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="i3"></label>
+				  <span class="label-text">Termite</span>
+				</div>
+			
+			
+				<div class="form-group">
+				  <input id="i4" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="i4"></label>
+				  <span class="label-text">Bed Bug</span>
+				</div>
+				
+				<div class="form-group">
+				  <input id="i5" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="i5"></label>
+				  <span class="label-text">Wood-borer</span>
+				</div>
+				
+				
+				<div class="form-group">
+				  <input id="i5" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="i5"></label>
+				  <span class="label-text">Rodent</span>
+				</div>
+			</form>
+		</div>
+		
+		<button style="background-color:#e6005c;border: none; padding: 15px 32px;font-size:16px;cursor: pointer;">Proceed</button>
+	  </div>
+	 
+	</div>
+	
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img src="./public/pest.jpeg" alt="Avatar" style="margin-top:15%;width:100px;height:100px;">
+		</div>
+		<div class="flip-card-back">
+		  <h3 class="sansserif" style="font-size:18px;line-height:30px;">Pest Control</h3>
+		  <button onclick="on8()"  class="button2"><span>Category Info </span></button>
+		</div>
+	  </div>
+	</div>
+	
+	
+	<!------------------------------------------------------------------------------------------------------------------------------->
+	
+	<div id="overlay9">
+	  <div class="card">
+	  <image src="./public/help.jpg" alt="Avatar" style="height:43%;width:100%;"/>
+	  <button class="close" onclick="off9()"><i class="fa fa-close"></i></button>
+		<div class="custom-radio-wrap">
+			<form>
+				<div class="form-group">
+				  <input id="i1" type="radio" name="custom-radio-btn">
+				  <label class="custom-radio" for="i1"></label>
+				  <span class="label-text">Masonry</span>
+				</div>
+			</form>
+		</div>
+		
+		<button style="background-color:#e6005c;border: none; padding: 15px 32px;font-size:16px;cursor: pointer;">Proceed</button>
+	  </div>
+	 
+	</div>
+	
+	
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img src="./public/builder.jpeg" alt="Avatar" style="margin-top:15%;width:100px;height:100px;">
+		</div>
+		<div class="flip-card-back">
+		  <h3 class="sansserif" style="font-size:18px;line-height:30px;">Builder</h3>
+		  <button onclick="on9()"  class="button2"><span>Category Info </span></button>
+		</div>
+	  </div>
+	</div>
+	
+	</div>
+</div>
+<!-- <a href="c:users/acer/desktop/new/rate.html">rate us</a> -->
+<script>
+
+
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+function on1() {
+  document.getElementById("overlay1").style.display = "block";
+}
+function off1() {
+  document.getElementById("overlay1").style.display = "none";
+}
+
+function on2() {
+  document.getElementById("overlay2").style.display = "block";
+}
+function off2() {
+  document.getElementById("overlay2").style.display = "none";
+}
+function on3() {
+  document.getElementById("overlay3").style.display = "block";
+}
+function off3() {
+  document.getElementById("overlay3").style.display = "none";
+}
+function on4() {
+  document.getElementById("overlay4").style.display = "block";
+}
+function off4() {
+  document.getElementById("overlay4").style.display = "none";
+}
+function on5() {
+  document.getElementById("overlay5").style.display = "block";
+}
+function off5() {
+  document.getElementById("overlay5").style.display = "none";
+}
+function on6() {
+  document.getElementById("overlay6").style.display = "block";
+}
+function off6() {
+  document.getElementById("overlay6").style.display = "none";
+}
+function on7() {
+  document.getElementById("overlay7").style.display = "block";
+}
+function off7() {
+  document.getElementById("overlay7").style.display = "none";
+}
+function on8() {
+  document.getElementById("overlay8").style.display = "block";
+}
+function off8() {
+  document.getElementById("overlay8").style.display = "none";
+}
+function on9() {
+  document.getElementById("overlay9").style.display = "block";
+}
+function off9() {
+  document.getElementById("overlay9").style.display = "none";
+}
+
+
+</script>
+</body>
+</html>
